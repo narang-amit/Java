@@ -1,0 +1,4 @@
+public class USACOtemp {
+    public int silver(char[][] holder, int t, int rowEnd, int colEnd, int rowStart, int colStart) {
+	int[][] move = new int[t][t];
+}

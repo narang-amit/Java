@@ -1,0 +1,73 @@
+import java.util.*;
+
+public class Quick {
+    public static int partition(int[] data, int low, int high){
+		if (low == high){
+		    return low;
+		}
+		int pivotInd = randomInd(low,high);
+		int pivot = data[pivotInd];
+		int lo = low + 1;
+		int hi = high;
+		swap(data, pivotInd, low);
+		while (lo <= hi) {
+		    if (data[lo] < pivot){
+				lo++;
+		    }
+		    else if(data[lo] == pivot && pivotInd <= high){
+				swap(data, lo, pivotInd);
+				pivotInd++;
+		    }
+		    else{
+				swap(data, hi, lo);
+				hi --;
+		    }
+		}
+		swap(data, low, hi);
+		return hi;
+    }
+	private static int randomInd(int start, int end) {
+		Random rand = new Random();
+		return rand.nextInt(end-start) + start;
+	}
+
+	private static void swap(int[] data, int val1, int val2) {
+		int x = data[val1];
+		data[val1] = data[val2];
+		data[val2] = x;
+	}
+
+	public static int quickselect(int[] ary, int k) {
+4		int temp = -2;
+		int high = ary.length -1;
+		int low = 0; 
+		while (temp != k) {
+			temp = partition(ary,low,high);
+			if (temp > k) {
+				high = temp-1;
+			}
+			else {
+				low = temp +1;
+			}
+		}
+		return ary[temp];
+	}
+
+	public static void quicksort(int[] ary) {
+		quicksortAux(ary,0,ary.length-1);
+	}
+	private static void quicksortAux(int[] ary, int start, int end) {
+		if (start <= end) {
+			int partition = partition(ary,start,end);
+			quicksortAux(ary,partition +1, end);
+			quicksortAux(ary,0,partition-1);
+		}
+	}
+    public static void main(String[] args) {
+    	int[] tests = {1000, 999,999,999,0,0,1000,1000,0};
+    	quicksort(tests);
+    	for (int i = 0; i < tests.length; i ++) {
+    		System.out.println(tests[i]);
+    	}
+    }
+ }

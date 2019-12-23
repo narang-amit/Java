@@ -1,2 +1,7 @@
-# Java
-Sample Java Projects, done as final projects for my AP Computer Science class.
+# AP Computer Science Work
+
+This repository has the two final projects I made for the class, MSPaint and VideoBooth.
+
+It also contains the work I did throughout the year in APCS, which included implementing several different algorithms and data structures.
+
+
